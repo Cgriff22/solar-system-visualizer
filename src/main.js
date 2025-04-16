@@ -16,10 +16,16 @@ window.addEventListener('DOMContentLoaded', () => {
     { name: "Mars", radius: 140, color: "red" },
   ];
   window.addEventListener('DOMContentLoaded', () => {
+    console.log("About to fetch...");
     fetch("http://localhost:8000/positions?date=2025-04-15")
       .then(res => res.json())
-      .then(data => {
-        console.log(data); // do something with planet positions here
+      .then(data => console.log("Planet data:", data))
+      .catch(err => console.error("Fetch error:", err));
+
+    //fetch("http://localhost:8000/positions?date=2025-04-15")
+      //.then(res => res.json())
+      //.then(data => {
+        //console.log(data); // do something with planet positions here
       });
   });
   function draw() {
