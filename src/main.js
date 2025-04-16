@@ -15,7 +15,13 @@ window.addEventListener('DOMContentLoaded', () => {
     { name: "Earth", radius: 110, color: "blue" },
     { name: "Mars", radius: 140, color: "red" },
   ];
-
+  window.addEventListener('DOMContentLoaded', () => {
+    fetch("http://localhost:8000/positions?date=2025-04-15")
+      .then(res => res.json())
+      .then(data => {
+        console.log(data); // do something with planet positions here
+      });
+  });
   function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
