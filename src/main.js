@@ -17,7 +17,7 @@ window.addEventListener('DOMContentLoaded', () => {
   ];
   window.addEventListener('DOMContentLoaded', () => {
     console.log("About to fetch...");
-    fetch("http://localhost:8000/positions?date=2025-04-15")
+    fetch("https://solar-system-backend.onrender.com/positions?date=2025-04-15")
       .then(res => res.json())
       .then(data => console.log("Planet data:", data))
       .catch(err => console.error("Fetch error:", err));
@@ -56,4 +56,3 @@ window.addEventListener('DOMContentLoaded', () => {
 
   draw();
 });
-
