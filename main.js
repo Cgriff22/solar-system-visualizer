@@ -1,4 +1,9 @@
+window.addEventListener('DOMContentLoaded', () => {
 const canvas = document.getElementById('solarCanvas');
+if (canvas) {
+	console.log("Canvas Loaded");
+	}
+});
 const ctx = canvas.getContext('2d');
 const CENTER_X = canvas.width / 2;
 const CENTER_Y = canvas.height / 2;
