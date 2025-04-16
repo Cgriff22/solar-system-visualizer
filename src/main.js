@@ -8,6 +8,12 @@ window.addEventListener('DOMContentLoaded', () => {
 
   console.log("Canvas Loaded");
   console.log("Vercel Live test!");
+  console.log("About to fetch...");
+
+  fetch("https://solar-system-backend.onrender.com/positions?date=2025-04-15")
+    .then(res => res.json())
+    .then(data => console.log("Planet data:", data))
+    .catch(err => console.error("Fetch error:", err));
 
   const planets = [
     { name: "Mercury", radius: 50, color: "gray" },
@@ -15,19 +21,7 @@ window.addEventListener('DOMContentLoaded', () => {
     { name: "Earth", radius: 110, color: "blue" },
     { name: "Mars", radius: 140, color: "red" },
   ];
-  window.addEventListener('DOMContentLoaded', () => {
-    console.log("About to fetch...");
-    fetch("https://solar-system-backend.onrender.com/positions?date=2025-04-15")
-      .then(res => res.json())
-      .then(data => console.log("Planet data:", data))
-      .catch(err => console.error("Fetch error:", err));
 
-    //fetch("http://localhost:8000/positions?date=2025-04-15")
-      //.then(res => res.json())
-      //.then(data => {
-        //console.log(data); // do something with planet positions here
-      //});
-  });
   function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -56,3 +50,4 @@ window.addEventListener('DOMContentLoaded', () => {
 
   draw();
 });
+
