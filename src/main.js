@@ -26,7 +26,7 @@ window.addEventListener('DOMContentLoaded', () => {
       //.then(res => res.json())
       //.then(data => {
         //console.log(data); // do something with planet positions here
-      });
+      //});
   });
   function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
