@@ -2,7 +2,7 @@ const canvas = document.getElementById('solarCanvas');
 const ctx = canvas.getContext('2d');
 const CENTER_X = canvas.width / 2;
 const CENTER_Y = canvas.height / 2;
-
+console.log("Vercel Live test!") 
 const planets = [
   { name: "Mercury", radius: 50, color: "gray" },
   { name: "Venus", radius: 80, color: "yellow" },
