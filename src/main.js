@@ -12,17 +12,13 @@ window.addEventListener('DOMContentLoaded', () => {
   
   //let planetPositions = {};
   let scale = 0.00000001
+  let planetPositions = {}
 
   fetch("https://solar-system-backend.onrender.com/positions?date=2025-04-15")
     .then(res => res.json())
-    .then(planetPositions => console.log("Planet data:", planetPositions))
-    .then(planetPositions => {
-      //planetPositions. = data;
-      console.log(planetPositions)
-      //console.log(data[0])
-      //const firstValue = Object.values(data[0]);
-      //console.log(firstValue);
-      draw();
+    .then(data => { 
+      planetPositions = data;
+      draw()
     })
     .catch(err => console.error("Fetch error:", err));
     
@@ -50,7 +46,7 @@ window.addEventListener('DOMContentLoaded', () => {
     // Draw planets (fake positions for now)
     planets.forEach((p, i) => {
       console.log("Looking up:", p.name.toLowerCase());
-      console.log("Position:", planetPositions[p.name.toLowerCase]);
+      console.log("Position:", planetPositions[p.name.toLowerCase()]);
       let [xRaw, yRaw] = planetPositions[p.name.toLowerCase()];
       let x = CENTER_X + xRaw * scale;
       let y = CENTER_Y + yRaw * scale;
