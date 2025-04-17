@@ -35,13 +35,6 @@ window.addEventListener('DOMContentLoaded', () => {
   function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // Draw orbits
-    planets.forEach(p => {
-      ctx.beginPath();
-      ctx.strokeStyle = "white";
-      ctx.arc(CENTER_X, CENTER_Y, p.radius, 0, 2 * Math.PI);
-      ctx.stroke();
-    });
 
     // Draw planets (fake positions for now)
     planets.forEach((p, i) => {
