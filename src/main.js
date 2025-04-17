@@ -28,7 +28,7 @@ window.addEventListener('DOMContentLoaded', () => {
     { name: "Mercury", radius: 50, color: "gray" },
     { name: "Venus", radius: 80, color: "yellow" },
     { name: "Earth", radius: 110, color: "blue" },
-    { name: "Mars", radius: 140, color: "red" },
+    { name: "Mars barycenter", radius: 140, color: "red" },
   ];
 
   function draw() {
