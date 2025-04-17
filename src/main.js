@@ -19,8 +19,9 @@ window.addEventListener('DOMContentLoaded', () => {
     .then(data => {
       planetPositions = data;
     })
+    .then(console.log("planetPositions:", planetPositions))
     .catch(err => console.error("Fetch error:", err));
-
+    console.log("Planet Positions: ", planetPositions)
   const planets = [
     { name: "Mercury", radius: 50, color: "gray" },
     { name: "Venus", radius: 80, color: "yellow" },
@@ -42,7 +43,7 @@ window.addEventListener('DOMContentLoaded', () => {
     // Draw planets (fake positions for now)
     planets.forEach((p, i) => {
       console.log("Looking up:", p.name.toLowerCase());
-      console.log("Position:", planetPositions[p.name.toLowerCase])
+      console.log("Position:", planetPositions[p.name])
       let [xRaw, yRaw] = planetPositions[p.name.toLowerCase()];
       let x = CENTER_X + xRaw * scale;
       let y = CENTER_Y + yRaw * scale;
