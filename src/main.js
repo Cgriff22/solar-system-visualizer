@@ -21,6 +21,8 @@ window.addEventListener('DOMContentLoaded', () => {
     })
     .catch(err => console.error("Fetch error:", err));
     
+    console.log(planetPositions)
+    console.log(planetPositions[0])
     const firstValue = Object.values(planetPositions[0]);
     console.log(firstValue);
 
@@ -45,7 +47,7 @@ window.addEventListener('DOMContentLoaded', () => {
     // Draw planets (fake positions for now)
     planets.forEach((p, i) => {
       console.log("Looking up:", p.name.toLowerCase());
-      console.log("Position:", planetPositions[p.name]);
+      console.log("Position:", planetPositions[p.name.toLowerCase]);
       let [xRaw, yRaw] = planetPositions[p.name.toLowerCase()];
       let x = CENTER_X + xRaw * scale;
       let y = CENTER_Y + yRaw * scale;
