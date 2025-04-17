@@ -34,9 +34,14 @@ window.addEventListener('DOMContentLoaded', () => {
 
   function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    // Draw the sun
+    ctx.beginPath();
+    ctx.fillStyle = "orange"
+    ctx.arc(CENTER_X, CENTER_Y, 10, 0, 2 * Math.PI)
+    ctx.fill()
 
-
-    // Draw planets (fake positions for now)
+    // Draw planets at their positions according to de440s.bsp
     planets.forEach((p, i) => {
       console.log("Looking up:", p.name.toLowerCase());
       console.log("Position:", planetPositions[p.name.toLowerCase()]);
