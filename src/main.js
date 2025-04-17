@@ -30,11 +30,11 @@ window.addEventListener('DOMContentLoaded', () => {
     { name: "Venus", radius: 80, color: "yellow" },
     { name: "Earth", radius: 110, color: "blue" },
     { name: "Mars barycenter", radius: 140, color: "red" },
-    {name: "Jupiter barycenter", radius: 180, color: "orange"}
-    {name: "Saturn barycenter", radius: 200, color: "orange"}
-    {name: "Uranus barycenter", radius: 220, color: "blue"}
-    {name: "Neptune barycenter", radius: 240, color: "blue"}
-    {name: "Pluto barycenter", radius: 260, color: "purple"}
+    {name: "Jupiter barycenter", radius: 180, color: "orange"},
+    {name: "Saturn barycenter", radius: 200, color: "orange"},
+    {name: "Uranus barycenter", radius: 220, color: "blue"},
+    {name: "Neptune barycenter", radius: 240, color: "blue"},
+    {name: "Pluto barycenter", radius: 260, color: "purple"},
   ];
 
   function draw() {
