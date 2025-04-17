@@ -43,16 +43,25 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // Draw planets at their positions according to de440s.bsp
     planets.forEach((p, i) => {
+
+      // Gather planet's positional data
       console.log("Looking up:", p.name.toLowerCase());
       console.log("Position:", planetPositions[p.name.toLowerCase()]);
       let [xRaw, yRaw] = planetPositions[p.name.toLowerCase()];
       let x = CENTER_X + xRaw * scale;
       let y = CENTER_Y + yRaw * scale;
 
+      // Draw planets based on position
       ctx.beginPath();
       ctx.fillStyle = p.color;
       ctx.arc(x, y, 5, 0, 2 * Math.PI);
       ctx.fill();
+
+      // Draw planet's name
+      ctx.font = "12px Arial";
+      ctx.fillStyle = "white";
+      ctx.fillText(p.name, x + 10, y)
+
     });
 
     requestAnimationFrame(draw);
