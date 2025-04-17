@@ -18,9 +18,11 @@ window.addEventListener('DOMContentLoaded', () => {
     .then(data => console.log("Planet data:", data))
     .then(data => {
       planetPositions = data;
+      draw();
     })
     .catch(err => console.error("Fetch error:", err));
     
+
     console.log(planetPositions)
     console.log(planetPositions[0])
     const firstValue = Object.values(planetPositions[0]);
@@ -61,6 +63,6 @@ window.addEventListener('DOMContentLoaded', () => {
     requestAnimationFrame(draw);
   }
 
-  draw();
+  
 });
 
