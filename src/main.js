@@ -19,9 +19,9 @@ window.addEventListener('DOMContentLoaded', () => {
     .then(data => {
       planetPositions = data;
       console.log(data)
-      console.log(data[0])
-      const firstValue = Object.values(data[0]);
-      console.log(firstValue);
+      //console.log(data[0])
+      //const firstValue = Object.values(data[0]);
+      //console.log(firstValue);
       draw();
     })
     .catch(err => console.error("Fetch error:", err));
