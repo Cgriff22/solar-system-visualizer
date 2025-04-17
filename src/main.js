@@ -37,9 +37,14 @@ window.addEventListener('DOMContentLoaded', () => {
     
     // Draw the sun
     ctx.beginPath();
+
     ctx.fillStyle = "orange"
     ctx.arc(CENTER_X, CENTER_Y, 10, 0, 2 * Math.PI)
     ctx.fill()
+
+    ctx.font = "12px Arial";
+    ctx.fillStyle = "white";
+    ctx.fillText("Sol", CENTER_X + 15, CENTER_Y)
 
     // Draw planets at their positions according to de440s.bsp
     planets.forEach((p, i) => {
