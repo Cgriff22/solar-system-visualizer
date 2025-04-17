@@ -42,7 +42,7 @@ window.addEventListener('DOMContentLoaded', () => {
     // Draw planets (fake positions for now)
     planets.forEach((p, i) => {
       console.log("Looking up:", p.name.toLowerCase());
-      console.log("Position:" planetPositions[p.name.toLowerCase])
+      console.log("Position:", planetPositions[p.name.toLowerCase])
       let [xRaw, yRaw] = planetPositions[p.name.toLowerCase()];
       let x = CENTER_X + xRaw * scale;
       let y = CENTER_Y + yRaw * scale;
