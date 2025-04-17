@@ -10,15 +10,15 @@ window.addEventListener('DOMContentLoaded', () => {
   console.log("Vercel Live test!");
   console.log("About to fetch...");
   
-  let planetPositions = {};
+  //let planetPositions = {};
   let scale = 0.00000001
 
   fetch("https://solar-system-backend.onrender.com/positions?date=2025-04-15")
     .then(res => res.json())
-    .then(data => console.log("Planet data:", data))
-    .then(data => {
-      planetPositions = data;
-      console.log(data)
+    .then(planetPositions => console.log("Planet data:", planetPositions))
+    .then(planetPositions => {
+      //planetPositions. = data;
+      console.log(planetPositions)
       //console.log(data[0])
       //const firstValue = Object.values(data[0]);
       //console.log(firstValue);
