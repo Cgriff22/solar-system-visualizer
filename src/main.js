@@ -11,7 +11,7 @@ window.addEventListener('DOMContentLoaded', () => {
   console.log("About to fetch...");
   
   let planetPositions = {};
-  let scale = 0.0000000000000001
+  let scale = 0.00000001
 
   fetch("https://solar-system-backend.onrender.com/positions?date=2025-04-15")
     .then(res => res.json())
@@ -41,6 +41,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // Draw planets (fake positions for now)
     planets.forEach((p, i) => {
+      console.log("Looking up:", p.name.toLowerCase());
       let [xRaw, yRaw] = planetPositions[p.name.toLowerCase()];
       let x = CENTER_X + xRaw * scale;
       let y = CENTER_Y + yRaw * scale;
