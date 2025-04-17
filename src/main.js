@@ -11,7 +11,7 @@ window.addEventListener('DOMContentLoaded', () => {
   console.log("About to fetch...");
   
   //let planetPositions = {};
-  let scale = 0.000001
+  let scale = 0.0000001
   let planetPositions = {}
 
   fetch("https://solar-system-backend.onrender.com/positions?date=2025-04-15")
