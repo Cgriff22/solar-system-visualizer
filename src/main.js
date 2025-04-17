@@ -18,7 +18,8 @@ window.addEventListener('DOMContentLoaded', () => {
     .then(res => res.json())
     .then(data => { 
       planetPositions = data;
-      draw()
+      console.log("Planet positions: ", data);
+      draw();
     })
     .catch(err => console.error("Fetch error:", err));
     
