@@ -18,9 +18,9 @@ window.addEventListener('DOMContentLoaded', () => {
     .then(data => console.log("Planet data:", data))
     .then(data => {
       planetPositions = data;
-      console.log(planetPositions)
-      console.log(planetPositions[0])
-      const firstValue = Object.values(planetPositions[0]);
+      console.log(data)
+      console.log(data[0])
+      const firstValue = Object.values(data[0]);
       console.log(firstValue);
       draw();
     })
