@@ -9,10 +9,16 @@ window.addEventListener('DOMContentLoaded', () => {
   console.log("Canvas Loaded");
   console.log("Vercel Live test!");
   console.log("About to fetch...");
+  
+  let planetPositions = {};
+  let scale = 0.0000000001
 
   fetch("https://solar-system-backend.onrender.com/positions?date=2025-04-15")
     .then(res => res.json())
     .then(data => console.log("Planet data:", data))
+    .then(data => {
+      planetPositions = data;
+    })
     .catch(err => console.error("Fetch error:", err));
 
   const planets = [
@@ -35,9 +41,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // Draw planets (fake positions for now)
     planets.forEach((p, i) => {
-      let angle = Date.now() / 1000 + i;
-      let x = CENTER_X + p.radius * Math.cos(angle);
-      let y = CENTER_Y + p.radius * Math.sin(angle);
+      let [xRaw, yRaw] = planetPositions[p.name.toLowerCase()];
+      let x = CENTER_X + xRaw * scale;
+      let y = CENTER_Y + yRaw * scale;
 
       ctx.beginPath();
       ctx.fillStyle = p.color;
