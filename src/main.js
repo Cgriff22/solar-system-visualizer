@@ -1,20 +1,22 @@
 window.addEventListener('DOMContentLoaded', () => {
   const canvas = document.getElementById('solarCanvas');
   if (!canvas) return;
+  
+  const ctx = canvas.getContext('2d');
+  let CENTER_X = canvas.width / 2;
+  let CENTER_Y = canvas.height / 2;
 
   // resize the canvas to fit the window.
   function resizeCanvas() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-    let CENTER_X = canvas.width / 2;
-    let CENTER_Y = canvas.height / 2;
+    CENTER_X = canvas.width / 2;
+    CENTER_Y = canvas.height / 2;
   }
   resizeCanvas();
   window.addEventListener('resize', resizeCanvas);
 
-  const ctx = canvas.getContext('2d');
   
-
   console.log("Canvas Loaded");
   console.log("Vercel Live test!");
   console.log("About to fetch...");
