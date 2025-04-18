@@ -13,6 +13,7 @@ window.addEventListener('DOMContentLoaded', () => {
     CENTER_X = canvas.width / 2;
     CENTER_Y = canvas.height / 2;
   }
+
   resizeCanvas();
   window.addEventListener('resize', resizeCanvas);
 
@@ -44,7 +45,7 @@ window.addEventListener('DOMContentLoaded', () => {
     {name: "Saturn barycenter", radius: 200, color: "orange"},
     {name: "Uranus barycenter", radius: 220, color: "blue"},
     {name: "Neptune barycenter", radius: 240, color: "blue"},
-    {name: "Pluto barycenter", radius: 260, color: "purple"},
+    {name: "Pluto barycenter", radius: 5, color: "purple"},
   ];
 
   function draw() {
