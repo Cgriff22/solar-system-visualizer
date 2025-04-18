@@ -2,9 +2,18 @@ window.addEventListener('DOMContentLoaded', () => {
   const canvas = document.getElementById('solarCanvas');
   if (!canvas) return;
 
+  // resize the canvas to fit the window.
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    let CENTER_X = canvas.width / 2;
+    let CENTER_Y = canvas.height / 2;
+  }
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
+
   const ctx = canvas.getContext('2d');
-  const CENTER_X = canvas.width / 2;
-  const CENTER_Y = canvas.height / 2;
+  
 
   console.log("Canvas Loaded");
   console.log("Vercel Live test!");
@@ -14,6 +23,7 @@ window.addEventListener('DOMContentLoaded', () => {
   let scale = 0.0000001
   let planetPositions = {}
 
+  // fetch and store skyfield data
   fetch("https://solar-system-backend.onrender.com/positions?date=2025-04-15")
     .then(res => res.json())
     .then(data => { 
@@ -23,9 +33,6 @@ window.addEventListener('DOMContentLoaded', () => {
     })
     .catch(err => console.error("Fetch error:", err));
     
-
-    
-
   const planets = [
     { name: "Mercury", radius: 50, color: "gray" },
     { name: "Venus", radius: 80, color: "yellow" },
@@ -43,11 +50,10 @@ window.addEventListener('DOMContentLoaded', () => {
     
     // Draw the sun
     ctx.beginPath();
-
     ctx.fillStyle = "orange"
     ctx.arc(CENTER_X, CENTER_Y, 10, 0, 2 * Math.PI)
     ctx.fill()
-
+    // namplate for sol
     ctx.font = "12px Arial";
     ctx.fillStyle = "white";
     ctx.fillText("Sol", CENTER_X + 15, CENTER_Y)
