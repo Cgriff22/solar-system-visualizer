@@ -33,7 +33,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const dateStr = currentDate.toISOString().split("T")[0];
     console.log("Fetching date:", dateStr);
     // fetch and store skyfield data
-    fetch("https://solar-system-backend.onrender.com/positions?date=${dateStr}")
+    fetch('https://solar-system-backend.onrender.com/positions?date=${dateStr}')
       .then(res => res.json())
       .then(data => { 
         planetPositions = data;
