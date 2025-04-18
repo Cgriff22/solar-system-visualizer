@@ -25,17 +25,28 @@ window.addEventListener('DOMContentLoaded', () => {
   //let planetPositions = {};
   let scale = 0.0000001
   let planetPositions = {}
+  
+  let currentDate = new Date();
 
-  // fetch and store skyfield data
-  fetch("https://solar-system-backend.onrender.com/positions?date=2025-04-15")
-    .then(res => res.json())
-    .then(data => { 
-      planetPositions = data;
-      console.log("Planet positions: ", data);
-      draw();
-    })
-    .catch(err => console.error("Fetch error:", err));
-    
+  function changeDate(days){
+    currentDate.setDate(currentDate.getDate() + days);
+    const dateStr = currentDate.toISOString().split("T")[0];
+    console.log("Fetching date:", dateStr);
+    // fetch and store skyfield data
+    fetch("https://solar-system-backend.onrender.com/positions?date=${iso}")
+      .then(res => res.json())
+      .then(data => { 
+        planetPositions = data;
+        console.log("Planet positions: ", data);
+        draw();
+      })
+      .catch(err => console.error("Fetch error:", err));
+    }
+
+  document.getElementById("forward").onclick = () => changeDate(1);
+  document.getElementById("backward").onclick = () => changeDate(-1);
+  changeDate(0);
+
   const planets = [
     { name: "Mercury", radius: 50, color: "gray" },
     { name: "Venus", radius: 80, color: "yellow" },
@@ -47,6 +58,8 @@ window.addEventListener('DOMContentLoaded', () => {
     {name: "Neptune barycenter", radius: 240, color: "blue"},
     {name: "Pluto barycenter", radius: 5, color: "purple"},
   ];
+
+
 
   function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
