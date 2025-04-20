@@ -13,6 +13,26 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+canvas { 
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+}
+
+.ui-wrapper{
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+}
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -24,10 +44,6 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
   overflow: hidden;
   position: relative;
 }
@@ -65,15 +81,7 @@ h1 {
   color: #888;
 }
 
-.button-container {
-  position: absolute;
-  top:20px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 10px;
-  margin-top: 20px;
-}
+
 
 .paragraph-container{
   position: relative;
@@ -86,15 +94,18 @@ h1 {
 }
 
 #top-text {
-  position: absolute;
-  top: -40px;
-  background: #1a1a1a;
+  background-color: #1a1a1a;
   color: white;
   padding: 8px 16px;
   border-radius: 8px;
   font-size: 1.2em;
+  margin-bottom: 10px;
 }
 
+.button-container {
+  display: flex;
+  gap: 10px;
+}
 
 button {
   border-radius: 8px;
@@ -104,6 +115,7 @@ button {
   font-weight: 500;
   font-family: inherit;
   background-color: #1a1a1a;
+  color: white;
   cursor: pointer;
   transition: border-color 0.25s;
 }
