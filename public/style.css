@@ -75,12 +75,10 @@ h1 {
   margin-top: 20px;
 }
 
-.bold-text {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  font-size: 1em;
-  font-weight: bold;
-  background-color: #eee8e8;
+.top-text {
+  position: absolute;
+  top: 0;
+  left: 0;
   
 }
 
