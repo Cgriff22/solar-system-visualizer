@@ -81,8 +81,6 @@ h1 {
   color: #888;
 }
 
-
-
 .paragraph-container{
   position: relative;
   top: 10px;
@@ -91,6 +89,20 @@ h1 {
   flex-direction: column;
   align-items: center;
   z-index: 5;
+}
+
+.text-box-container{
+  position: absolute;
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  justify-content: center;
+}
+#text-box{
+  padding: 6px 12px;
+  font-size: 1em;
+  border-radius: 6px;
+  border: 1px solid #ccc
 }
 
 #top-text {
@@ -119,9 +131,11 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
