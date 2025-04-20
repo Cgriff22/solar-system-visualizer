@@ -43,8 +43,22 @@ window.addEventListener('DOMContentLoaded', () => {
       .catch(err => console.error("Fetch error:", err));
     }
 
-  document.getElementById("forward").onclick = () => changeDate(30);
-  document.getElementById("backward").onclick = () => changeDate(-30);
+  
+  const paragraph = document.getElementById("top-text")
+  function forwardClick(){
+    changeDate(30);
+    paragraph.innerText = currentDate
+  }
+  function backwardClick(){
+    changeDate(-30);
+    paragraph.innerText = currentDate
+  }
+  
+  
+  document.getElementById("forward").onclick = () => forwardClick();
+  document.getElementById("backward").onclick = () => backwardClick();
+  
+  
   changeDate(0);
 
   const planets = [
