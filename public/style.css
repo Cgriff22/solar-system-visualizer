@@ -121,7 +121,7 @@ h1 {
 .date-container{
   position: absolute;
   top: 100%;
-  display: block;
+  display: flex;
   gap: 10px;
   margin-top:10px;
   justify-content: center;
