@@ -128,14 +128,9 @@ h1 {
 }
 
 #date-text-box{
-  top: 20px;
   border: 1px solid #ccc;
-  height: 10px;
-  padding: 5px 5px;
   font-size: 1em;
   border: 1px solid #ccc;
-  width: 10px;
-  justify-content: center;
 }
 
 #date-box{
