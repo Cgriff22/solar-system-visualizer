@@ -55,6 +55,7 @@ window.addEventListener('DOMContentLoaded', () => {
     currentYear = dateArray.slice(14);
     console.log(currentDay, currentMonth, currentYear);
   }
+  readDate();
   const paragraph = document.getElementById("top-text")
   function forwardClick(){
     changeDate(30);
