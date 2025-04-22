@@ -44,11 +44,16 @@ window.addEventListener('DOMContentLoaded', () => {
       .catch(err => console.error("Fetch error:", err));
     }
 
-  
+  function readDate(date){
+    for(let i = 0; i < date.length; i++){
+      console.log(date.charAt(i));
+    }
+  }
   const paragraph = document.getElementById("top-text")
   function forwardClick(){
     changeDate(30);
     paragraph.innerText = currentDate.toDateString();
+    readDate(currentDate.toDateString());
   }
   function backwardClick(){
     changeDate(-30);
