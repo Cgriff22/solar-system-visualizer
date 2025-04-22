@@ -33,7 +33,8 @@ window.addEventListener('DOMContentLoaded', () => {
     const dateStr = currentDate.toISOString().split("T")[0];
     console.log("Fetching date:", dateStr);
     // fetch and store skyfield data
-    fetch(`https://solar-system-backend.onrender.com/positions?date=${dateStr}`)
+    //fetch(`https://solar-system-backend.onrender.com/positions?date=${dateStr}`)
+    fetch(`http://localhost:8000/positions?date=${dateStr}`)
       .then(res => res.json())
       .then(data => { 
         planetPositions = data;
@@ -47,11 +48,11 @@ window.addEventListener('DOMContentLoaded', () => {
   const paragraph = document.getElementById("top-text")
   function forwardClick(){
     changeDate(30);
-    paragraph.innerText = currentDate
+    paragraph.innerText = currentDate.toDateString();
   }
   function backwardClick(){
     changeDate(-30);
-    paragraph.innerText = currentDate
+    paragraph.innerText = currentDate.toDateString();
   }
   
   
@@ -92,7 +93,13 @@ window.addEventListener('DOMContentLoaded', () => {
     planets.forEach((p, i) => {
 
       // Gather planet's positional data
-      let [xRaw, yRaw] = planetPositions[p.name.toLowerCase()];
+      //let [xRaw, yRaw] = planetPositions[p.name.toLowerCase()];
+      let key = p.name.toLowerCase();
+      if (!(key in planetPositions)){
+        console.warn(`Missing position for ${key}`);
+        return;
+      }
+      let [xRaw, yRaw] = planetPositions[key];
       let x = CENTER_X + xRaw * scale;
       let y = CENTER_Y + yRaw * scale;
 
