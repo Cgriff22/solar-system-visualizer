@@ -43,9 +43,7 @@ window.addEventListener('DOMContentLoaded', () => {
       })
       .catch(err => console.error("Fetch error:", err));
     }
-  const monthBox = document.getElementById("month-box");
-  const dayBox = document.getElementById("day-box");
-  const yearBox = document.getElementById("year-box");
+  
 
   function readDate(date){
     const currentDay = date.getDate();
@@ -53,11 +51,14 @@ window.addEventListener('DOMContentLoaded', () => {
     const currentYear = date.getFullYear();
     console.log(currentDay, currentMonth, currentYear);
 
+    const monthBox = document.getElementById("month-box");
+    const dayBox = document.getElementById("day-box");
+    const yearBox = document.getElementById("year-box");
     monthBox.value = currentMonth;
     dayBox.value = currentDay;
     yearBox.value = currentYear;
   }
-
+  readDate(currentDate);
   const paragraph = document.getElementById("top-text")
   
   function forwardClick(){
