@@ -128,6 +128,7 @@ h1 {
 }
 
 #date-text-box{
+  margin: auto;
   border: 1px solid #ccc;
   font-size: 1em;
   border: 1px solid #ccc;
