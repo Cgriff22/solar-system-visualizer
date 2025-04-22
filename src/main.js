@@ -43,14 +43,23 @@ window.addEventListener('DOMContentLoaded', () => {
       })
       .catch(err => console.error("Fetch error:", err));
     }
+  const monthBox = document.getElementById("month-box");
+  const dayBox = document.getElementById("day-box");
+  const yearBox = document.getElementById("year-box");
 
   function readDate(date){
     const currentDay = date.getDate();
     const currentMonth = date.getMonth() + 1;
     const currentYear = date.getFullYear();
     console.log(currentDay, currentMonth, currentYear);
+
+    monthBox.value = currentMonth;
+    dayBox.value = currentDay;
+    yearBox.value = currentYear;
   }
+
   const paragraph = document.getElementById("top-text")
+  
   function forwardClick(){
     changeDate(30);
     paragraph.innerText = currentDate.toDateString();
@@ -60,6 +69,8 @@ window.addEventListener('DOMContentLoaded', () => {
     changeDate(-30);
     paragraph.innerText = currentDate.toDateString();
     readDate(currentDate);
+    
+    
   }
   
   
