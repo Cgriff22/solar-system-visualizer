@@ -44,10 +44,15 @@ window.addEventListener('DOMContentLoaded', () => {
       .catch(err => console.error("Fetch error:", err));
     }
 
+  let currentDay = [];
+  let currentMonth = [];
+  let currentYear = [];
   function readDate(date){
-    for(let i = 0; i < date.length; i++){
-      console.log(date.charAt(i));
-    }
+    date.split('').forEach(char => dateArray);
+    currentDay = dateArray.slice(8,10);
+    currentMonth = dateArray.slice(4,7);
+    currentYear = dateArray.slice(14);
+    console.log(currentDay, currentMonth, currentYear);
   }
   const paragraph = document.getElementById("top-text")
   function forwardClick(){
