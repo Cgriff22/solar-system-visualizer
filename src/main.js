@@ -47,6 +47,7 @@ window.addEventListener('DOMContentLoaded', () => {
   let currentDay = [];
   let currentMonth = [];
   let currentYear = [];
+  let dateArray = [];
   function readDate(date){
     date.split('').forEach(char => dateArray);
     currentDay = dateArray.slice(8,10);
