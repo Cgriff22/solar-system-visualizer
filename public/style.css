@@ -127,32 +127,23 @@ h1 {
   justify-content: center;
 }
 #date-text-box{
-  padding: 6px 6px;
+  border: 1px solid #ccc;
   top: 100%;
+  line-height: 28px;
+  padding: 20px 10px;
   font-size: 1em;
   border: 1px solid #ccc;
   width: 30px;
   justify-content: center;
 }
 
-#month-box{
+#date-box{
   background-color: #1a1a1a;
   font-size: 1em;
   border-radius: 6px;
   border: 1px solid #ccc;
 }
-#day-box{
-  background-color: #1a1a1a;
-  font-size: 1em;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-}
-#year-box{
-  background-color: #1a1a1a;
-  font-size: 1em;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-}
+
 
 .button-container {
   display: flex;
