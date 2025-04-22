@@ -44,23 +44,17 @@ window.addEventListener('DOMContentLoaded', () => {
       .catch(err => console.error("Fetch error:", err));
     }
 
-  let currentDay = [];
-  let currentMonth = [];
-  let currentYear = [];
-  let dateArray = [];
   function readDate(date){
-    date.split('').forEach(char => dateArray);
-    currentDay = dateArray.slice(8,10);
-    currentMonth = dateArray.slice(4,7);
-    currentYear = dateArray.slice(14);
-    console.log(currentDay, currentMonth, currentYear);
+    const currentDay = date.getDate();
+    const currentMonth = date.getMonth() + 1;
+    const currentYear = date.getFullYear();
+    console.log(currentDay, currentMonth, curentYear);
   }
-  
   const paragraph = document.getElementById("top-text")
   function forwardClick(){
     changeDate(30);
     paragraph.innerText = currentDate.toDateString();
-    readDate(currentDate.toDateString());
+    readDate(currentDate);
   }
   function backwardClick(){
     changeDate(-30);
