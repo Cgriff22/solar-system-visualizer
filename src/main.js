@@ -60,7 +60,7 @@ window.addEventListener('DOMContentLoaded', () => {
   function forwardClick(){
     changeDate(30);
     paragraph.innerText = currentDate.toDateString();
-    readDate(currentDate);
+    readDate(currentDate.toDateString());
   }
   function backwardClick(){
     changeDate(-30);
