@@ -51,9 +51,9 @@ window.addEventListener('DOMContentLoaded', () => {
     const currentYear = date.getFullYear();
     console.log(currentDay, currentMonth, currentYear);
 
-    const monthBox = document.getElementById("month-box");
-    const dayBox = document.getElementById("day-box");
-    const yearBox = document.getElementById("year-box");
+    const monthBox = document.getElementById("month-text-box");
+    const dayBox = document.getElementById("day-text-box");
+    const yearBox = document.getElementById("year-text-box");
     monthBox.value = currentMonth;
     dayBox.value = currentDay;
     yearBox.value = currentYear;
