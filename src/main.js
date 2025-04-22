@@ -101,7 +101,7 @@ window.addEventListener('DOMContentLoaded', () => {
     // Draw the sun
     ctx.beginPath();
     ctx.fillStyle = "orange"
-    ctx.arc(CENTER_X, CENTER_Y, 10, 0, 2 * Math.PI)
+    ctx.arc(CENTER_X, CENTER_Y, 5, 0, 2 * Math.PI)
     ctx.fill()
     // namplate for sol
     ctx.font = "12px Arial";
