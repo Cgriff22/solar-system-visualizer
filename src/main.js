@@ -55,12 +55,12 @@ window.addEventListener('DOMContentLoaded', () => {
     currentYear = dateArray.slice(14);
     console.log(currentDay, currentMonth, currentYear);
   }
-  readDate();
+  
   const paragraph = document.getElementById("top-text")
   function forwardClick(){
     changeDate(30);
     paragraph.innerText = currentDate.toDateString();
-    readDate(currentDate.toDateString());
+    readDate(currentDate);
   }
   function backwardClick(){
     changeDate(-30);
