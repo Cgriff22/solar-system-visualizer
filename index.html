@@ -18,17 +18,21 @@
         <div class="text-box-container">
           <input id="text-box">
           <div class="date-container">
-            <p id="date-box">Month: </p>
-            <input id="date-text-box">
-            <p id="date-box">Day: </p>
-            <input id="date-text-box">
-            <p id="date-box">Year: </p>
-            <input id="date-text-box">
+            <p class="date-box">Month: </p>
+            <input class="date-text-box" id="month-box" maxlength="2">
+            <p class="date-box">Day: </p>
+            <input class="date-text-box" id="day-box" maxlength="2">
+            <p class="date-box">Year: </p>
+            <input class="date-text-box" id="year-box" maxlength="4">
+            <button id="enter-button">Enter</button>
           </div>
         </div>
       </div>
       
     </div>
-    
+    <div class="zoom-container">
+      <button id="zoom-in">zoom in</button>
+      <button id="zoom-out">zoom out</button>
+    </div>
   </body>
 </html>

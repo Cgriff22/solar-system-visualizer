@@ -20,7 +20,7 @@ window.addEventListener('DOMContentLoaded', () => {
   // === Global Variables ===
   let currentDate = new Date();
   let planetPositions = {};
-  const scale = 0.0000001;
+  let scale = 0.0000001;
 
   const planets = [
     { name: "Mercury", radius: 50, color: "gray" },
@@ -35,16 +35,21 @@ window.addEventListener('DOMContentLoaded', () => {
   ];
 
   const paragraph = document.getElementById("top-text");
-
+  const topText = document.getElementById("top-text");
   // === Utility Functions ===
+
+  // Places initial date in text boxes
   function readDate(date) {
     const currentDay = date.getDate();
     const currentMonth = date.getMonth() + 1;
     const currentYear = date.getFullYear();
 
-    const monthBox = document.getElementById("month-text-box");
-    const dayBox = document.getElementById("day-text-box");
-    const yearBox = document.getElementById("year-text-box");
+    const monthBox = document.getElementById("month-box");
+    const dayBox = document.getElementById("day-box");
+    const yearBox = document.getElementById("year-box");
+
+    
+    topText.innerHTML = currentDate;
 
     if (monthBox && dayBox && yearBox) {
       monthBox.value = currentMonth;
@@ -82,6 +87,43 @@ window.addEventListener('DOMContentLoaded', () => {
     readDate(currentDate);
   }
 
+  function customDate(){
+    const monthElement = document.getElementById("month-box");
+    const dayElement = document.getElementById("day-box");
+    const yearElement = document.getElementById("year-box");
+
+    const month = monthElement.value;
+    const day = dayElement.value;
+    const year = yearElement.value;
+    
+    const customDate = new Date(year, month, day);
+    topText.innerHTML = customDate;
+    const customDateStr = customDate.toISOString().split("T")[0];
+    currentDate = customDate;
+
+    // uvicorn main:app --reload 
+    // type above command in python main directory and correct virtual environment
+    // to begin serving to local host
+    fetch(`http://localhost:8000/positions?date=${customDateStr}`)
+      .then(res => res.json())
+      .then(data => {
+        planetPositions = data;
+        console.log("Planet positions: ", data);
+        draw();
+      })
+      .catch(err => console.error("Fetch error:", err));
+  }
+    
+function zoomIn(){
+  scale *= 1.1;
+}
+function zoomOut(){
+  scale /= 1.1;
+}
+ 
+  document.getElementById("zoom-in").onclick = zoomIn;
+  document.getElementById("zoom-out").onclick = zoomOut;
+  document.getElementById("enter-button").onclick = customDate;
   document.getElementById("forward").onclick = forwardClick;
   document.getElementById("backward").onclick = backwardClick;
 

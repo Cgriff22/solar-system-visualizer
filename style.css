@@ -127,7 +127,7 @@ h1 {
   justify-content: center;
 }
 
-#date-text-box{
+.date-text-box{
   margin: auto;
   border: 1px solid #ccc;
   font-size: 1em;
@@ -135,18 +135,30 @@ h1 {
   width: 2em;
 }
 
-#date-box{
+.date-box{
   background-color: #1a1a1a;
   font-size: 1em;
   border-radius: 6px;
   border: 1px solid #ccc;
 }
 
-
+#enter-button{
+  background-color: #1a1a1a;
+  font-size: 1em;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
 .button-container {
   display: flex;
   gap: 10px;
   
+}
+
+.zoom-container{
+  position: relative;
+  align-items: top;
+  top: 10px;
+  display: flex;
 }
 
 button {
