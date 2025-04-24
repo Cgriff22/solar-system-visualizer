@@ -80,7 +80,7 @@ window.addEventListener('DOMContentLoaded', () => {
       .catch(err => console.error("Fetch error:", err));
   }
 
-
+  let controller = new AbortController();
   let timeoutId = null;
   let isPlaying = false;
   function play(){
@@ -89,16 +89,18 @@ window.addEventListener('DOMContentLoaded', () => {
     currentDate.setDate(currentDate.getDate() + 1);
     const dateStr = currentDate.toISOString().split("T")[0];
 
-    fetch(`http://localhost:8000/positions?date=${dateStr}`)
+    controller = new AbortController();
+    fetch(`http://localhost:8000/positions?date=${dateStr}`, {signal: controller.signal})
       .then(res => res.json())
       .then(data => {
+        if (!isPlaying) return;
         planetPositions = data;
         //console.log("Planet positions: ", data);
         draw();
         paragraph.innerText = currentDate.toDateString();
         readDate(currentDate);
 
-        timeoutId = setTimeout(play, 10);
+        timeoutId = setTimeout(play, 100);
       })
       .catch(err => console.error("Fetch error:", err));  
       
@@ -108,12 +110,14 @@ window.addEventListener('DOMContentLoaded', () => {
     if (!isPlaying){
       isPlaying = true;
       play();
+      draw();
     }
   }
 
   function stop(){
-    isPlaying = false;
-    clearTimeout(timeoutId);
+    controller.abort(); // stop active fetch
+    isPlaying = false; // toggle the flag
+    clearTimeout(timeoutId); // clear the next loop
   }
   // === Event Handlers ===
   function forwardClick() {
@@ -206,7 +210,7 @@ function zoomOut(){
       ctx.fillText(p.name, x + 10, y);
     });
 
-    requestAnimationFrame(draw);
+    if (isPlaying) requestAnimationFrame(draw);
   }
 
   // === Initialize ===
