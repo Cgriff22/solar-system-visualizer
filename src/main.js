@@ -16,7 +16,13 @@ window.addEventListener('DOMContentLoaded', () => {
 
   resizeCanvas();
   window.addEventListener('resize', resizeCanvas);
-
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+      console.log('Enter key pressed!');
+      customDate();
+    }
+  });
+  
   // === Global Variables ===
   let currentDate = new Date();
   let planetPositions = {};
@@ -57,7 +63,7 @@ window.addEventListener('DOMContentLoaded', () => {
       yearBox.value = currentYear;
     }
   }
-
+  
   function changeDate(days) {
     currentDate.setDate(currentDate.getDate() + days);
     const dateStr = currentDate.toISOString().split("T")[0];
@@ -74,6 +80,41 @@ window.addEventListener('DOMContentLoaded', () => {
       .catch(err => console.error("Fetch error:", err));
   }
 
+
+  let timeoutId = null;
+  let isPlaying = false;
+  function play(){
+    if (!isPlaying) return;
+
+    currentDate.setDate(currentDate.getDate() + 1);
+    const dateStr = currentDate.toISOString().split("T")[0];
+
+    fetch(`http://localhost:8000/positions?date=${dateStr}`)
+      .then(res => res.json())
+      .then(data => {
+        planetPositions = data;
+        //console.log("Planet positions: ", data);
+        draw();
+        paragraph.innerText = currentDate.toDateString();
+        readDate(currentDate);
+
+        timeoutId = setTimeout(play, 10);
+      })
+      .catch(err => console.error("Fetch error:", err));  
+      
+  }
+  
+  function start(){
+    if (!isPlaying){
+      isPlaying = true;
+      play();
+    }
+  }
+
+  function stop(){
+    isPlaying = false;
+    clearTimeout(timeoutId);
+  }
   // === Event Handlers ===
   function forwardClick() {
     changeDate(30);
@@ -121,6 +162,8 @@ function zoomOut(){
   scale /= 1.1;
 }
  
+  document.getElementById("start").onclick = start;
+  document.getElementById("stop").onclick = stop;
   document.getElementById("zoom-in").onclick = zoomIn;
   document.getElementById("zoom-out").onclick = zoomOut;
   document.getElementById("enter-button").onclick = customDate;
