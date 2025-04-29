@@ -8,7 +8,7 @@
   </head>
   <body>
     <canvas id="solarCanvas" width="800" height="800"></canvas>
-    <script type="module" src="/src/new.js"></script>
+    <script type="module" src="/src/main.js"></script>
 
     <div class="paragraph-container">
       <p id="top-text">Hello There!</p>
@@ -17,16 +17,24 @@
         <button id="forward">Forward</button>
         <button id="start">Start</button>
         <button id="stop">Stop</button>
-        <div class="zoom-container">
-          <button id="zoom-in">zoom in</button>
-          <button id="zoom-out">zoom out</button>
-        </div>
-          
+        <div class="text-box-container">
+          <input id="text-box">
+          <div class="date-container">
+            <p class="date-box">Month: </p>
+            <input class="date-text-box" id="month-box" maxlength="2">
+            <p class="date-box">Day: </p>
+            <input class="date-text-box" id="day-box" maxlength="2">
+            <p class="date-box">Year: </p>
+            <input class="date-text-box" id="year-box" maxlength="4">
+            <button id="enter-button">Enter</button>
           </div>
         </div>
       </div>
       
     </div>
-    
+    <div class="zoom-container">
+      <button id="zoom-in">zoom in</button>
+      <button id="zoom-out">zoom out</button>
+    </div>
   </body>
 </html>
