@@ -257,37 +257,97 @@ function zoomOut(){
 }
 document.getElementById("zoom-out").onclick = zoomOut;
 
-  // === Animation Loop ===
-  let jd = getJulianDate(new Date())
-  let T = (jd - 2451545.0) / 36525;
-  let displayDate = julianToDate(jd);
+// === Animation Loop ===
+let jd = getJulianDate(new Date())
+let T = (jd - 2451545.0) / 36525;
+let timeFactor = 0.00001;
+let displayDate = julianToDate(jd);
+
+
+let scale = 150;
+
+console.log(new Date());
+
+// resize canvas to fit window and fix resolution
+
+function resizeCanvas() {
+  const dpr = window.devicePixelRatio || 1;
+  const canvas = document.getElementById("solarCanvas");
+  const ctx = canvas.getContext("2d");
+
+  canvas.width = window.innerWidth * dpr;
+  canvas.height = window.innerHeight * dpr;
+  canvas.style.width = window.innerWidth + "px";
+  canvas.style.height = window.innerHeight + "px";
+
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0); // scale drawing context
+}
+
+window.addEventListener('resize', ()=>{
+  resizeCanvas();
+  draw();
+});
+
+// Star Generator
+function getRandomInt(min, max){
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
   
+
+let forward = true;
+let reversed = false;
+function pause(){
+  forward = false;
+  reversed = false;
+}
+function play(){
+  forward = true;
+}
+function reverse(){
+  forward = false;
+  reversed = true;
+}
+function increaseSpeed(){
+  timeFactor *= 10;
+}
+function decreaseSpeed(){
+  timeFactor /= 10;
+}
+
+document.getElementById("start").onclick = play;
+document.getElementById("stop").onclick = pause;
+document.getElementById("reverse").onclick = reverse;
+document.getElementById("speed-up").onclick = increaseSpeed;
+document.getElementById("slow-down").onclick = decreaseSpeed;
   
-  let scale = 150;
+function animate() {
+  const canvas = document.getElementById("solarCanvas");
+  const ctx = canvas.getContext("2d");
+  let CENTER_X = window.innerWidth/2;
+  let CENTER_Y = window.innerHeight/2;
+
+  const planetsData = planets.map(p => updatePlanetPosition(p, T));
   
-  console.log(new Date());
-  
-  
-  function animate() {
-    const canvas = document.getElementById("solarCanvas");
-    const ctx = canvas.getContext("2d");
-  
-    
-    const centerX = canvas.width / 2;
-    const centerY = canvas.height / 2;
-  
-    const planetsData = planets.map(p => updatePlanetPosition(p, T));
-    
-    drawPlanets(ctx, planetsData, scale, centerX, centerY);
-  
-    T += 0.00001; // advance time a little bit
+  drawPlanets(ctx, planetsData, scale, CENTER_X, CENTER_Y);
+  if (forward){
+    reversed = false
+    T += timeFactor; // advance time a little bit
     jd = (T * 36525) + 2451545;
     displayDate = julianToDate(jd)
-    //console.log(displayDate)
-    document.getElementById('top-text').innerHTML = displayDate.toISOString().split("T")[0];
-    
-    requestAnimationFrame(animate);
   }
+  if (reversed){
+    T -= timeFactor; // advance time a little bit
+    jd = (T * 36525) + 2451545;
+    displayDate = julianToDate(jd)
+  }
+  
+  //console.log(displayDate)
+  document.getElementById('top-text').innerHTML = displayDate.toISOString().split("T")[0];
+  
+  requestAnimationFrame(animate);
+}
   
   // === Start everything ===
   window.onload = () => {
