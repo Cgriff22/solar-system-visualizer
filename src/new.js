@@ -1,4 +1,4 @@
-// === Helper functions ===
+// Helper functions
 function degreesToRadians(deg) {
     return deg * Math.PI / 180;
   }
@@ -56,7 +56,7 @@ function degreesToRadians(deg) {
     return { name: planet.name, a, e, i, L, w, o, M, E, r, v };
   }
   
-  // === Draw functions ===
+  // Draw functions
   function drawOrbit(ctx, planet, scale, centerX, centerY) {
     const a = planet.a * scale;
     const e = planet.e;
@@ -69,10 +69,29 @@ function degreesToRadians(deg) {
     ctx.ellipse(offsetX, centerY, a, b, 0, 0, 2 * Math.PI);
     ctx.stroke();
   }
-  
+
+function generateStars() {
+  const canvas = document.getElementById("solarCanvas");
+  const stars = [];
+  for (let i = 0; i < 100; i++){
+    const x = Math.random() * canvas.width;
+    const y = Math.random() * canvas.height;
+    stars.push({x: x, y: y});
+  }
+  return stars;
+}
   function drawPlanets(ctx, planetsData, scale, centerX, centerY) {
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-  
+    
+    // draw stars in the background
+    if (window.stars) {
+      for (const star of window.stars){
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, 1, 0, Math.PI * 2);
+        ctx.fillStyle = 'white';
+        ctx.fill();
+      }
+  }
     // Draw Sun
     ctx.beginPath();
     ctx.fillStyle = "yellow";
@@ -245,7 +264,7 @@ function degreesToRadians(deg) {
   ];
 
 
-  //  === Utility Functions === 
+  // Utility Functions
   
 function zoomIn(){
     scale /= 0.5;
@@ -285,7 +304,7 @@ function resizeCanvas() {
 
 window.addEventListener('resize', ()=>{
   resizeCanvas();
-  draw();
+  animate();
 });
 
 // Star Generator
@@ -333,12 +352,12 @@ function animate() {
   drawPlanets(ctx, planetsData, scale, CENTER_X, CENTER_Y);
   if (forward){
     reversed = false
-    T += timeFactor; // advance time a little bit
+    T += timeFactor; 
     jd = (T * 36525) + 2451545;
     displayDate = julianToDate(jd)
   }
   if (reversed){
-    T -= timeFactor; // advance time a little bit
+    T -= timeFactor; 
     jd = (T * 36525) + 2451545;
     displayDate = julianToDate(jd)
   }
@@ -349,8 +368,14 @@ function animate() {
   requestAnimationFrame(animate);
 }
   
-  // === Start everything ===
+  // Start everything 
   window.onload = () => {
+    resizeCanvas();
+    // Generate stars after canvas is properly sized
+    window.stars = generateStars();
+  
+  // Store stars globally so animate() can access them
+  window.stars = stars;
     animate();
   };
   
