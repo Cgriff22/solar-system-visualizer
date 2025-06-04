@@ -73,7 +73,7 @@ function degreesToRadians(deg) {
 function generateStars() {
   const canvas = document.getElementById("solarCanvas");
   const stars = [];
-  for (let i = 0; i < 100; i++){
+  for (let i = 0; i < 250; i++){
     const x = Math.random() * canvas.width;
     const y = Math.random() * canvas.height;
     stars.push({x: x, y: y});
@@ -304,6 +304,7 @@ function resizeCanvas() {
 
 window.addEventListener('resize', ()=>{
   resizeCanvas();
+  window.stars = generateStars();
   animate();
 });
 
@@ -375,7 +376,7 @@ function animate() {
     window.stars = generateStars();
   
   // Store stars globally so animate() can access them
-  window.stars = stars;
+  
     animate();
   };
   
